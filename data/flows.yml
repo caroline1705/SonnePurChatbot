@@ -1,0 +1,8 @@
+flows:
+  meter_reading:
+    description: Asks user about their meter reading
+    steps:
+      - collect: name
+      - collect: meter_reading
+        description: the amount of energy collected
+      - action: utter_transfer_complete

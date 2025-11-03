@@ -1,0 +1,35 @@
+version: "3.1"
+
+slots:
+  name:
+    type: text
+    mappings:
+      - type: from_llm
+  meter_reading:
+    type: float
+    mappings:
+      - type: from_llm
+
+responses:
+  utter_ask_name:
+    - text: "What is your name?"
+
+  utter_ask_meter_reading:
+    - text: "What did the meter read?"
+
+  utter_transfer_complete:
+    - text: "All done. {name}'s meter reading is {meter_reading}."
+
+  utter_free_chitchat_response:
+    - text: "placeholder"
+      metadata:
+        rephrase: True
+        rephrase_prompt: |
+          The following is a conversation with an AI assistant built with Rasa.
+          The assistant can help the user transfer money.
+          The assistant is helpful, creative, clever, and very friendly.
+          The user is making small talk, and the assistant should respond, keeping things light.
+          Context / previous conversation with the user:
+          {{history}}
+          {{current_input}}
+          Suggested AI Response:
