@@ -1,5 +1,7 @@
 recipe: default.v1
 language: en
+additional_languages:
+  - de
 pipeline:
 - name: CompactLLMCommandGenerator
   llm:

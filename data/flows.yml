@@ -2,6 +2,8 @@ flows:
   meter_reading:
     description: Asks user about their meter reading
     steps:
+      - action: utter_greet
+      - action: action_session_start
       - collect: name
       - collect: meter_reading
         description: the amount of energy collected

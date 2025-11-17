@@ -11,6 +11,9 @@ slots:
       - type: from_llm
 
 responses:
+  utter_greet:
+    - text: "Wie kann ich Ihnen helfen? Or, let me know if you would like me to speak in English!"
+
   utter_ask_name:
     - text: "What is your name?"
 
