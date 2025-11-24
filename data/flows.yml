@@ -1,10 +1,13 @@
 flows:
   meter_reading:
-    description: Asks user about their meter reading
+    description: Customer would like to give their meter reading.
     steps:
-      - action: utter_greet
-      - action: action_session_start
       - collect: name
+      - collect: customer_id
+      - action: action_identify_customer
+      - action: action_get_current_meter_reading
+      - action: utter_contract_id
       - collect: meter_reading
         description: the amount of energy collected
+      - action: action_set_current_meter_reading
       - action: utter_transfer_complete

@@ -1,5 +1,10 @@
 version: "3.1"
 
+actions:
+  - action_identify_customer
+  - action_get_current_meter_reading
+  - action_set_current_meter_reading
+
 slots:
   name:
     type: text
@@ -9,19 +14,46 @@ slots:
     type: float
     mappings:
       - type: from_llm
+  customer_id:
+    type: text
+    mappings:
+      - type: from_llm
+  contract_id:
+    type: text
+    mappings:
+      - type: controlled
+  customer_is_identified:
+    type: bool
+    initial_value: False
+    mappings:
+      - type: controlled
+  current_meter_reading:
+    type: float
+    mappings:
+      - type: controlled
+  last_reading_date:
+    type: text
+    mappings:
+      - type: controlled 
 
 responses:
   utter_greet:
-    - text: "Wie kann ich Ihnen helfen? Or, let me know if you would like me to speak in English!"
+    - text: "How can I help you?"
 
   utter_ask_name:
     - text: "What is your name?"
+
+  utter_ask_customer_id:
+    - text: "Please give me your customer ID."
 
   utter_ask_meter_reading:
     - text: "What did the meter read?"
 
   utter_transfer_complete:
     - text: "All done. {name}'s meter reading is {meter_reading}."
+
+  utter_contract_id:
+    - text: "We found your record. Your contract ID is {contract_id}."
 
   utter_free_chitchat_response:
     - text: "placeholder"
